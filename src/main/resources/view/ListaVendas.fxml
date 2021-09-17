@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="573.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ControllerListaVendas">
+   <children>
+      <TableView fx:id="tableVendas" layoutX="66.0" layoutY="93.0" prefHeight="252.0" prefWidth="580.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
+        <columns>
+          <TableColumn fx:id="cCarro" prefWidth="311.0" text="Carro" />
+          <TableColumn fx:id="cMarca" prefWidth="78.0" text="Marca" />
+            <TableColumn fx:id="cValor" prefWidth="79.0" text="Valor" />
+            <TableColumn fx:id="cData" prefWidth="110.0" text="Data" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnFechar" layoutX="510.0" layoutY="358.0" mnemonicParsing="false" onAction="#fecharJanela" prefHeight="36.0" prefWidth="68.0" text="Fechar" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Label fx:id="lbId" layoutX="28.0" layoutY="14.0" text="Id:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Label fx:id="lbNome" layoutX="9.0" layoutY="37.0" text="Nome:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0" />
+      <Label fx:id="lbVendas" layoutX="289.0" layoutY="37.0" prefHeight="21.0" prefWidth="53.0" text="Vendas" AnchorPane.leftAnchor="289.0" AnchorPane.rightAnchor="253.0" AnchorPane.topAnchor="37.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbIdVendedor" layoutX="32.0" layoutY="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0" />
+      <Label fx:id="lbNomeVendedor" layoutX="56.0" layoutY="30.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0" />
+      <Button fx:id="btnCalcComissao" layoutX="24.0" layoutY="536.0" mnemonicParsing="false" onAction="#calcularComissaoCarro" prefHeight="36.0" prefWidth="127.0" text="Calcular Comissão" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+      <Label fx:id="lbCarro" layoutX="153.0" layoutY="525.0" text="Carro:" AnchorPane.bottomAnchor="30.0" />
+      <Label fx:id="lbNomeCarro" layoutX="191.0" layoutY="526.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="190.0" />
+      <Label fx:id="lbComissao" layoutX="153.0" layoutY="545.0" text="Comissão:" AnchorPane.bottomAnchor="10.0" />
+      <Label fx:id="lbValorComissao" layoutX="214.0" layoutY="546.0" AnchorPane.bottomAnchor="10.0" />
+   </children>
+</AnchorPane>

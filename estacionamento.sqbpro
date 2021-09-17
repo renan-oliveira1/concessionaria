@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/Renan/IdeaProjects/SC3011721/estacionamento.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1659"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,12:mainProprietario"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1">INSERT INTO Vendedor(id, nome) VALUES(1, 'Gabriel Soad');
+INSERT INTO Vendedor(id, nome) VALUES(2, 'Jones Destro');
+INSERT INTO Vendedor(id, nome) VALUES(3, 'Gabriel Custodio');
+
+INSERT INTO Veiculo(id, nome, marca, valorVenda, dataVenda, idVendedor, tipo) VALUES(1, 'Ferrari', 'Ferrari', 1000000.00, NULL, NULL, 1);
+INSERT INTO VeiculoImportado(idVeiculo, paisOrigem) VALUES(1, 'Argentina');
+
+INSERT INTO Veiculo(id, nome, marca, valorVenda, dataVenda, idVendedor, tipo) VALUES(2, 'Fusca', 'Volks', 16000.00, NULL, NULL, 2);
+INSERT INTO VeiculoNacional(idVeiculo, idProprietario) VALUES(2, NULL);
+
+INSERT INTO Veiculo(id, nome, marca, valorVenda, dataVenda, idVendedor, tipo) VALUES(3, 'Porsche911', 'Porsche', 1000000.00, '2021-05-21', 2, 1);
+INSERT INTO VeiculoImportado(idVeiculo, paisOrigem) VALUES(3, 'Estados Unidos');
+
+INSERT INTO Veiculo(id, nome, marca, valorVenda, dataVenda, idVendedor, tipo) VALUES(4, 'Maserati', 'Maserati', 1500010.00, '2021-05-01', 2, 1);
+INSERT INTO VeiculoImportado(idVeiculo, paisOrigem) VALUES(4, 'Estados Unidos');
+
+INSERT INTO Proprietario(id, nome) VALUES(1, 'Renan Alves de Oliveira');
+INSERT INTO Veiculo(id, nome, marca, valorVenda, dataVenda, idVendedor, tipo) VALUES(5, 'Jetta', 'Volks', 30000.00, NULL, NULL, 2);
+INSERT INTO VeiculoNacional(idVeiculo, idProprietario) VALUES(5, 1);</sql><current_tab id="0"/></tab_sql></sqlb_project>
