@@ -1,9 +1,9 @@
 package presentation.controller;
 
-import data.dao.VeiculoDAO;
-import data.dao.VeiculoImportadoDAO;
-import data.dao.VeiculoNacionalDAO;
-import data.dao.VendedorDAO;
+import data.dao.VeiculoDao;
+import data.dao.VeiculoImportadoDao;
+import data.dao.VeiculoNacionalDao;
+import data.dao.VendedorDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -62,9 +62,9 @@ public class ControllerEfetuarVenda {
 
     private void loadValues() {
         vendedores.clear();
-        VendedorDAO vendedorDAO = new VendedorDAO();
-        VeiculoImportadoDAO veiculoImportadoDAO = new VeiculoImportadoDAO();
-        VeiculoNacionalDAO veiculoNacionalDAO = new VeiculoNacionalDAO();
+        VendedorDao vendedorDAO = new VendedorDao();
+        VeiculoImportadoDao veiculoImportadoDAO = new VeiculoImportadoDao();
+        VeiculoNacionalDao veiculoNacionalDAO = new VeiculoNacionalDao();
         for(Vendedor vendedor : vendedorDAO.loadAll()){
 
             for (VeiculoImportado veiculoImportado : veiculoImportadoDAO.loadAll()){
@@ -131,7 +131,7 @@ public class ControllerEfetuarVenda {
         veiculoToSell.setDataVenda(LocalDate.now());
         veiculoToSell.setVendedor(vendedor);
 
-        VeiculoDAO veiculoDAO = new VeiculoDAO();
+        VeiculoDao veiculoDAO = new VeiculoDao();
         veiculoDAO.updateSell(veiculoToSell);
 
         fecharJanela();

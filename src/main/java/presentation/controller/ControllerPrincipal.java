@@ -1,7 +1,7 @@
 package presentation.controller;
 
-import data.dao.VeiculoImportadoDAO;
-import data.dao.VeiculoNacionalDAO;
+import data.dao.VeiculoImportadoDao;
+import data.dao.VeiculoNacionalDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -95,8 +95,8 @@ public class ControllerPrincipal {
 
     public void ajudarFiltrarVeiculosDisponiveis() {
         veiculosDisponivel.clear();
-        VeiculoImportadoDAO veiculoImportadoDAO = new VeiculoImportadoDAO();
-        VeiculoNacionalDAO veiculoNacionalDAO = new VeiculoNacionalDAO();
+        VeiculoImportadoDao veiculoImportadoDAO = new VeiculoImportadoDao();
+        VeiculoNacionalDao veiculoNacionalDAO = new VeiculoNacionalDao();
         veiculosDisponivel.addAll(veiculoImportadoDAO.loadAll());
         veiculosDisponivel.addAll(veiculoNacionalDAO.loadAll());
     }

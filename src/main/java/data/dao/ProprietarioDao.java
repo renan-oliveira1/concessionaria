@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ProprietarioDAO implements DAO<Proprietario, Integer> {
+public class ProprietarioDao implements IDao<Proprietario, Integer> {
     @Override
     public void save(Proprietario proprietario) {
         String sql = "INSERT INTO Proprietario (nome, telefone) VALUES (?, ?)";

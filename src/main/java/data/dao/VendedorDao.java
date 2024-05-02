@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VendedorDAO implements DAO<Vendedor, Integer>{
+public class VendedorDao implements IDao<Vendedor, Integer> {
     @Override
     public void save(Vendedor vendedor) {
         String sql = "INSERT INTO Vendedor (nome) VALUES (?)";

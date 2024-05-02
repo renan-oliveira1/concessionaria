@@ -6,6 +6,6 @@ public interface IRepository<T, K>{
     void save(T type);
     void delete(K key);
     void update(T type);
-    T loadOne(K k);
+    T loadOne(K key);
     List<T> loadAll();
 }

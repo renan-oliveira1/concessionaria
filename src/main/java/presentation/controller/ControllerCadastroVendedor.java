@@ -1,6 +1,6 @@
 package presentation.controller;
 
-import data.dao.VendedorDAO;
+import data.dao.VendedorDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -18,7 +18,7 @@ public class ControllerCadastroVendedor {
     public void cadastrarVendedor(ActionEvent actionEvent) {
         String nome = txtNome.getText();
         Vendedor vendedor = new Vendedor(nome);
-        VendedorDAO vendedorDAO = new VendedorDAO();
+        VendedorDao vendedorDAO = new VendedorDao();
         vendedorDAO.save(vendedor);
         Stage stage = (Stage) btnCadastrar.getScene().getWindow();
         stage.close();

@@ -10,10 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VeiculoImportadoDAO implements DAO<VeiculoImportado, Integer> {
+public class VeiculoImportadoDao implements IDao<VeiculoImportado, Integer> {
     @Override
     public void save(VeiculoImportado veiculo) {
-        VeiculoDAO veiculoDAO = new VeiculoDAO();
+        VeiculoDao veiculoDAO = new VeiculoDao();
         int lastId = veiculoDAO.lastIdSaved();
         String sql = "INSERT INTO VeiculoImportado (idVeiculo, paisOrigem) VALUES (?, ?)";
         try(PreparedStatement statement = ConnectionFactory.createPreparedStatement(sql)){
@@ -36,7 +36,7 @@ public class VeiculoImportadoDAO implements DAO<VeiculoImportado, Integer> {
             statement.setInt(2, veiculo.getId());
             statement.executeUpdate();
 
-            VeiculoDAO veiculoDAO = new VeiculoDAO();
+            VeiculoDao veiculoDAO = new VeiculoDao();
             veiculoDAO.update(veiculo);
         }catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -55,7 +55,7 @@ public class VeiculoImportadoDAO implements DAO<VeiculoImportado, Integer> {
         try(PreparedStatement statement = ConnectionFactory.createPreparedStatement(sql)) {
             ResultSet result = statement.executeQuery();
             while(result.next()){
-                VeiculoDAO veiculoDAO = new VeiculoDAO();
+                VeiculoDao veiculoDAO = new VeiculoDao();
                 String nomePais = result.getString("paisOrigem");
                 Paises paisOrigem = Paises.getPaisByString(nomePais);
                 VeiculoImportado veiculoImportado = (VeiculoImportado) veiculoDAO.loadOne(result.getInt("idVeiculo"));

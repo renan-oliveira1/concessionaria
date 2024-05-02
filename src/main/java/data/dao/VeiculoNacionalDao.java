@@ -11,17 +11,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class VeiculoNacionalDAO implements DAO<VeiculoNacional, Integer> {
+public class VeiculoNacionalDao implements IDao<VeiculoNacional, Integer> {
     @Override
     public void save(VeiculoNacional veiculo) {
-        VeiculoDAO veiculoDAO = new VeiculoDAO();
+        VeiculoDao veiculoDAO = new VeiculoDao();
         int lastIdCar = veiculoDAO.lastIdSaved();
         String sql = "INSERT INTO VeiculoNacional (idVeiculo, idProprietario) VALUES (?, ?)";
         try(PreparedStatement statement = ConnectionFactory.createPreparedStatement(sql)){
             statement.setInt(1, lastIdCar);
             if(veiculo.getProprietario().isPresent()) {
 
-                ProprietarioDAO proprietarioDAO = new ProprietarioDAO();
+                ProprietarioDao proprietarioDAO = new ProprietarioDao();
                 proprietarioDAO.save(veiculo.getProprietario().get());
                 int lastIdProprietario = proprietarioDAO.lastIdSaved();
 
@@ -41,10 +41,10 @@ public class VeiculoNacionalDAO implements DAO<VeiculoNacional, Integer> {
     @Override
     public void update(VeiculoNacional veiculo) {
         if(veiculo!=null){
-            VeiculoDAO veiculoDAO = new VeiculoDAO();
+            VeiculoDao veiculoDAO = new VeiculoDao();
             veiculoDAO.update(veiculo);
 
-            ProprietarioDAO proprietarioDAO = new ProprietarioDAO();
+            ProprietarioDao proprietarioDAO = new ProprietarioDao();
             Proprietario proprietario = proprietarioDAO.loadOne(veiculo.getId());
 
             if(veiculo.getProprietario().isPresent()){
@@ -85,10 +85,10 @@ public class VeiculoNacionalDAO implements DAO<VeiculoNacional, Integer> {
         try(PreparedStatement statement = ConnectionFactory.createPreparedStatement(sql)) {
             ResultSet result = statement.executeQuery();
             while(result.next()){
-                VeiculoDAO veiculoDAO = new VeiculoDAO();
+                VeiculoDao veiculoDAO = new VeiculoDao();
                 VeiculoNacional veiculoNacional = (VeiculoNacional) veiculoDAO.loadOne(result.getInt("idVeiculo"));
 
-                ProprietarioDAO proprietarioDAO = new ProprietarioDAO();
+                ProprietarioDao proprietarioDAO = new ProprietarioDao();
                 if(result.getInt("idProprietario") != 0){
                     Proprietario proprietario = proprietarioDAO.loadOne(result.getInt("idProprietario"));
                     veiculoNacional.setProprietario(proprietario);

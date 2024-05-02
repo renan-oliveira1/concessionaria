@@ -1,8 +1,8 @@
 package presentation.controller;
 
-import data.dao.VeiculoDAO;
-import data.dao.VeiculoImportadoDAO;
-import data.dao.VeiculoNacionalDAO;
+import data.dao.VeiculoDao;
+import data.dao.VeiculoImportadoDao;
+import data.dao.VeiculoNacionalDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -165,8 +165,8 @@ public class ControllerCadastroCarro {
 
     private void salvarVeiculoImportado() throws VerificacaoErroInput {
         VeiculoImportado veiculoToSave = getVeiculoImportado();
-        VeiculoDAO veiculoDAO = new VeiculoDAO();
-        VeiculoImportadoDAO veiculoImportadoDAO = new VeiculoImportadoDAO();
+        VeiculoDao veiculoDAO = new VeiculoDao();
+        VeiculoImportadoDao veiculoImportadoDAO = new VeiculoImportadoDao();
         veiculoDAO.save(veiculoToSave);
         veiculoImportadoDAO.save(veiculoToSave);
         fecharJanela();
@@ -174,8 +174,8 @@ public class ControllerCadastroCarro {
 
     private void salvarVeiculoNacional() throws VerificacaoErroInput {
         VeiculoNacional veiculoToSave = getVeiculoNacional();
-        VeiculoDAO veiculoDAO = new VeiculoDAO();
-        VeiculoNacionalDAO veiculoINacionalDAO = new VeiculoNacionalDAO();
+        VeiculoDao veiculoDAO = new VeiculoDao();
+        VeiculoNacionalDao veiculoINacionalDAO = new VeiculoNacionalDao();
         veiculoDAO.save(veiculoToSave);
         veiculoINacionalDAO.save(veiculoToSave);
         fecharJanela();
@@ -185,13 +185,13 @@ public class ControllerCadastroCarro {
         if(tipoUpdate == 1){
             VeiculoImportado veiculoImportado = getVeiculoImportado();
             veiculoImportado.setId(veiculoToLoad.getId());
-            VeiculoImportadoDAO veiculoImportadoDAO = new VeiculoImportadoDAO();
+            VeiculoImportadoDao veiculoImportadoDAO = new VeiculoImportadoDao();
             veiculoImportadoDAO.update(veiculoImportado);
         }
         else{
             VeiculoNacional veiculoNacional = getVeiculoNacional();
             veiculoNacional.setId(veiculoToLoad.getId());
-            VeiculoNacionalDAO veiculoNacionalDAO = new VeiculoNacionalDAO();
+            VeiculoNacionalDao veiculoNacionalDAO = new VeiculoNacionalDao();
             veiculoNacionalDAO.update(veiculoNacional);
         }
         fecharJanela();

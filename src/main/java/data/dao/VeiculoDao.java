@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class VeiculoDAO implements DAO<Veiculo, Integer> {
+public class VeiculoDao implements IDao<Veiculo, Integer> {
 
     @Override
     public void save(Veiculo veiculo) {
@@ -86,7 +86,7 @@ public class VeiculoDAO implements DAO<Veiculo, Integer> {
                     if(verificarVendedor == 0)
                         return new VeiculoImportado(idCarro, nomeCarro, marca, valorVenda);
 
-                    VendedorDAO vendedorDAO = new VendedorDAO();
+                    VendedorDao vendedorDAO = new VendedorDao();
                     Vendedor vendedor = vendedorDAO.loadOne(verificarVendedor);
                     String data = result.getString("dataVenda");
                     return new VeiculoImportado(idCarro, nomeCarro, marca, valorVenda, data, vendedor);
@@ -95,7 +95,7 @@ public class VeiculoDAO implements DAO<Veiculo, Integer> {
                     if(verificarVendedor == 0)
                         return new VeiculoNacional(idCarro, nomeCarro, marca, valorVenda);
 
-                    VendedorDAO vendedorDAO = new VendedorDAO();
+                    VendedorDao vendedorDAO = new VendedorDao();
                     Vendedor vendedor = vendedorDAO.loadOne(verificarVendedor);
                     String data = result.getString("dataVenda");
                     return new VeiculoNacional(idCarro,nomeCarro, marca, valorVenda, data, vendedor);
