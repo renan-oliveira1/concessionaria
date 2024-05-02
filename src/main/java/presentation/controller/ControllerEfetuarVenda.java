@@ -4,6 +4,7 @@ import data.dao.VeiculoDao;
 import data.dao.VeiculoImportadoDao;
 import data.dao.VeiculoNacionalDao;
 import data.dao.VendedorDao;
+import domain.use_case.vendedor.LoadAllSellersUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +21,7 @@ import domain.model.VeiculoNacional;
 import domain.model.Vendedor;
 import presentation.view.JanelaCadastroVendedor;
 import presentation.view.JanelaListaVendas;
+import util.AppDependencies;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -53,6 +55,8 @@ public class ControllerEfetuarVenda {
     private ObservableList<Vendedor> vendedores;
     private Veiculo veiculoToSell;
 
+    private final LoadAllSellersUseCase loadAllSellersUseCase = AppDependencies.loadAllSellersUseCase();
+
     @FXML
     private void initialize() {
         bindTableModel();
@@ -62,25 +66,27 @@ public class ControllerEfetuarVenda {
 
     private void loadValues() {
         vendedores.clear();
-        VendedorDao vendedorDAO = new VendedorDao();
-        VeiculoImportadoDao veiculoImportadoDAO = new VeiculoImportadoDao();
-        VeiculoNacionalDao veiculoNacionalDAO = new VeiculoNacionalDao();
-        for(Vendedor vendedor : vendedorDAO.loadAll()){
-
-            for (VeiculoImportado veiculoImportado : veiculoImportadoDAO.loadAll()){
-                if(veiculoImportado.getVendedor()!=null){
-                    if(veiculoImportado.getVendedor().getId().equals(vendedor.getId()))
-                        vendedor.addVeiculoVenda(veiculoImportado);
-                }
-            }
-            for (VeiculoNacional veiculoNacional : veiculoNacionalDAO.loadAll())
-                if(veiculoNacional.getVendedor()!=null){
-                    if(veiculoNacional.getVendedor().getId().equals(vendedor.getId()))
-                        vendedor.addVeiculoVenda(veiculoNacional);
-                }
-
-            vendedores.add(vendedor);
-        }
+        var teste = loadAllSellersUseCase.invoke();
+        vendedores.addAll(loadAllSellersUseCase.invoke());
+//        VendedorDao vendedorDAO = new VendedorDao();
+//        VeiculoImportadoDao veiculoImportadoDAO = new VeiculoImportadoDao();
+//        VeiculoNacionalDao veiculoNacionalDAO = new VeiculoNacionalDao();
+//        for(Vendedor vendedor : loadAllSellersUseCase.invoke()){
+//
+//            for (VeiculoImportado veiculoImportado : veiculoImportadoDAO.loadAll()){
+//                if(veiculoImportado.getVendedor()!=null){
+//                    if(veiculoImportado.getVendedor().getId().equals(vendedor.getId()))
+//                        vendedor.addVeiculoVenda(veiculoImportado);
+//                }
+//            }
+//            for (VeiculoNacional veiculoNacional : veiculoNacionalDAO.loadAll())
+//                if(veiculoNacional.getVendedor()!=null){
+//                    if(veiculoNacional.getVendedor().getId().equals(vendedor.getId()))
+//                        vendedor.addVeiculoVenda(veiculoNacional);
+//                }
+//
+//            vendedores.add(vendedor);
+//        }
     }
 
     private void bindDataToTable() {

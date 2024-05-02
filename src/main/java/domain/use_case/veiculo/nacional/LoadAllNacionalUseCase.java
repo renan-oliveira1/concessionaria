@@ -1,4 +1,4 @@
-package domain.use_case.veiculo.importado;
+package domain.use_case.veiculo.nacional;
 
 import domain.model.VeiculoNacional;
 import domain.repository.IRepository;
@@ -12,7 +12,7 @@ public class LoadAllNacionalUseCase {
         this.veiculoNacionalRepository = veiculoNacionalRepository;
     }
 
-    public List<VeiculoNacional> loadAll(){
+    public List<VeiculoNacional> invoke(){
         return veiculoNacionalRepository.loadAll();
     }
 }

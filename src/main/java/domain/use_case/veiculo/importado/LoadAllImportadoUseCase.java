@@ -12,7 +12,7 @@ public class LoadAllImportadoUseCase {
         this.veiculoImportadoRepository = veiculoImportadoRepository;
     }
 
-    public List<VeiculoImportado> loadAll(){
+    public List<VeiculoImportado> invoke(){
         return veiculoImportadoRepository.loadAll();
     }
 }

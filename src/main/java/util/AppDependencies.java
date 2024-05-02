@@ -3,8 +3,8 @@ package util;
 import data.dao.*;
 import data.repository.*;
 import domain.use_case.veiculo.importado.LoadAllImportadoUseCase;
-import domain.use_case.veiculo.importado.LoadAllNacionalUseCase;
-import domain.use_case.veiculo.importado.VeiculoImportadoUseCases;
+import domain.use_case.veiculo.nacional.LoadAllNacionalUseCase;
+import domain.use_case.vendedor.LoadAllSellersUseCase;
 
 public class AppDependencies {
     //DAOS
@@ -24,10 +24,11 @@ public class AppDependencies {
     //USE_CASES
     private static LoadAllImportadoUseCase loadAllImportadoUseCase;
     private static LoadAllNacionalUseCase loadAllNacionalUseCase;
+    private static LoadAllSellersUseCase loadAllSellersUseCase;
 
     //GET DAOS
     public static VendedorDao getVendedorDao(){
-        if(vendedorDao != null){
+        if(vendedorDao == null){
             vendedorDao = new VendedorDao();
         }
         return vendedorDao;
@@ -111,4 +112,12 @@ public class AppDependencies {
         }
         return loadAllNacionalUseCase;
     }
+
+    public static LoadAllSellersUseCase loadAllSellersUseCase(){
+        if(loadAllSellersUseCase == null){
+            loadAllSellersUseCase = new LoadAllSellersUseCase(getVendedorRepository(), getVeiculoNacionalRepository(), getVeiculoImportadoRepository());
+        }
+        return loadAllSellersUseCase;
+    }
+
 }

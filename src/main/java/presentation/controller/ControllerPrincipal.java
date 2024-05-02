@@ -1,9 +1,7 @@
 package presentation.controller;
 
-import data.dao.VeiculoImportadoDao;
-import data.dao.VeiculoNacionalDao;
 import domain.use_case.veiculo.importado.LoadAllImportadoUseCase;
-import domain.use_case.veiculo.importado.LoadAllNacionalUseCase;
+import domain.use_case.veiculo.nacional.LoadAllNacionalUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -44,8 +42,8 @@ public class ControllerPrincipal {
     private ObservableList<Veiculo> veiculos;
     private final List<Veiculo> veiculosDisponivel = new ArrayList<>();
 
-    private LoadAllNacionalUseCase loadAllNacionalUseCase = AppDependencies.loadAllNacionalUseCase();
-    private LoadAllImportadoUseCase loadAllImportadoUseCase = AppDependencies.loadAllImportadoUseCase();
+    private final LoadAllNacionalUseCase loadAllNacionalUseCase = AppDependencies.loadAllNacionalUseCase();
+    private final LoadAllImportadoUseCase loadAllImportadoUseCase = AppDependencies.loadAllImportadoUseCase();
     @FXML
     private void initialize() {
         bindTableModel();
@@ -99,8 +97,8 @@ public class ControllerPrincipal {
 
     public void ajudarFiltrarVeiculosDisponiveis() {
         veiculosDisponivel.clear();
-        veiculosDisponivel.addAll(loadAllImportadoUseCase.loadAll());
-        veiculosDisponivel.addAll(loadAllNacionalUseCase.loadAll());
+        veiculosDisponivel.addAll(loadAllImportadoUseCase.invoke());
+        veiculosDisponivel.addAll(loadAllNacionalUseCase.invoke());
     }
 
     public void venderCarro(ActionEvent actionEvent) throws IOException {
