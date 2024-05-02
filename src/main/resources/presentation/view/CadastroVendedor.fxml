@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="90.0" prefWidth="238.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.ControllerCadastroVendedor">
+   <children>
+      <Button fx:id="btnCadastrar" layoutX="511.0" layoutY="361.0" mnemonicParsing="false" onAction="#cadastrarVendedor" prefHeight="25.0" prefWidth="76.0" text="Cadastrar" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Label fx:id="lbNome" layoutX="14.0" layoutY="20.0" text="Nome:" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="15.0" />
+      <TextField fx:id="txtNome" layoutX="62.0" layoutY="6.0" promptText="Nome" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="10.0" />
+   </children>
+</AnchorPane>

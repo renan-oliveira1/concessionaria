@@ -3,11 +3,11 @@ module view {
     requires javafx.fxml;
     requires java.sql;
 
-    opens view to javafx.fxml;
-    opens controller;
-    opens model;
+    opens presentation.view to javafx.fxml;
+    opens presentation.controller;
+    opens domain.model;
 
-    exports model;
-    exports controller;
-    exports view;
+    exports domain.model;
+    exports presentation.controller;
+    exports presentation.view;
 }

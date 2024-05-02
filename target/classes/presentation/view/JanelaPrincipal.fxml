@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="573.0" prefWidth="573.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.ControllerPrincipal">
+   <children>
+      <TableView fx:id="tableVeiculo" layoutX="10.0" layoutY="53.0" prefHeight="389.0" prefWidth="566.0" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+        <columns>
+          <TableColumn fx:id="cId" prefWidth="41.0" text="Id" />
+          <TableColumn fx:id="cNomeCarro" prefWidth="268.0" text="Carro" />
+            <TableColumn fx:id="cMarca" prefWidth="153.0" text="Marca" />
+            <TableColumn fx:id="cValor" prefWidth="92.0" text="Valor" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnVender" layoutX="486.0" layoutY="527.0" mnemonicParsing="false" onAction="#venderCarro" prefHeight="32.0" prefWidth="73.0" text="Vender" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+      <Button fx:id="btnAddCarroImportado" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#addCarroImportado" prefHeight="32.0" prefWidth="172.0" text="Adicionar Carro Importado" AnchorPane.leftAnchor="10.0" />
+      <Button fx:id="btnEditarCarro" layoutX="490.0" layoutY="10.0" mnemonicParsing="false" onAction="#editarCarro" prefHeight="32.0" prefWidth="73.0" text="Editar" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Button fx:id="btnAddCarroNacional" layoutX="195.0" layoutY="531.0" mnemonicParsing="false" onAction="#addCarroNacional" prefHeight="32.0" prefWidth="166.0" text="Adicionar Carro Nacional" AnchorPane.topAnchor="10.0" />
+   </children>
+</AnchorPane>
