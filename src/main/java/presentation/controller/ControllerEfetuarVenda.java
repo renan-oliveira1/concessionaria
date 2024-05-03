@@ -1,9 +1,5 @@
 package presentation.controller;
 
-import data.dao.VeiculoDao;
-import data.dao.VeiculoImportadoDao;
-import data.dao.VeiculoNacionalDao;
-import data.dao.VendedorDao;
 import domain.use_case.veiculo.SellVeiculoUseCase;
 import domain.use_case.vendedor.LoadAllSellersUseCase;
 import javafx.collections.FXCollections;

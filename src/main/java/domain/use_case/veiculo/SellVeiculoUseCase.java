@@ -3,13 +3,14 @@ package domain.use_case.veiculo;
 import data.repository.VeiculoRepositoryImpl;
 import domain.model.Veiculo;
 import domain.model.Vendedor;
+import domain.repository.IVeiculoRepository;
 
 import java.time.LocalDate;
 
 public class SellVeiculoUseCase {
-    private final VeiculoRepositoryImpl veiculoRepository;
+    private final IVeiculoRepository veiculoRepository;
 
-    public SellVeiculoUseCase(VeiculoRepositoryImpl veiculoRepository) {
+    public SellVeiculoUseCase(IVeiculoRepository veiculoRepository) {
         this.veiculoRepository = veiculoRepository;
     }
 
