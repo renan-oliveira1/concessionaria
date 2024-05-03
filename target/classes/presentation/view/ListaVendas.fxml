@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="573.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.ControllerListaVendas">
+<AnchorPane prefHeight="573.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.ControllerListaVendas">
    <children>
       <TableView fx:id="tableVendas" layoutX="66.0" layoutY="93.0" prefHeight="252.0" prefWidth="580.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="70.0">
         <columns>
@@ -23,11 +23,11 @@
          </font>
       </Label>
       <Label fx:id="lbIdVendedor" layoutX="32.0" layoutY="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="10.0" />
-      <Label fx:id="lbNomeVendedor" layoutX="56.0" layoutY="30.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="30.0" />
-      <Button fx:id="btnCalcComissao" layoutX="24.0" layoutY="536.0" mnemonicParsing="false" onAction="#calcularComissaoCarro" prefHeight="36.0" prefWidth="127.0" text="Calcular Comissão" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+      <Label fx:id="lbNomeVendedor" layoutX="56.0" layoutY="30.0" AnchorPane.leftAnchor="56.0" AnchorPane.topAnchor="30.0" />
+      <Button fx:id="btnCalcComissao" layoutX="24.0" layoutY="536.0" mnemonicParsing="false" onAction="#calcularComissaoCarro" prefHeight="36.0" prefWidth="135.0" text="Calcular Comissão" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
       <Label fx:id="lbCarro" layoutX="153.0" layoutY="525.0" text="Carro:" AnchorPane.bottomAnchor="30.0" />
-      <Label fx:id="lbNomeCarro" layoutX="191.0" layoutY="526.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="190.0" />
       <Label fx:id="lbComissao" layoutX="153.0" layoutY="545.0" text="Comissão:" AnchorPane.bottomAnchor="10.0" />
-      <Label fx:id="lbValorComissao" layoutX="214.0" layoutY="546.0" AnchorPane.bottomAnchor="10.0" />
+       <Label fx:id="lbNomeCarro" layoutX="194.0" layoutY="525.0" prefHeight="18.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="194.0" />
+      <Label fx:id="lbValorComissao" layoutX="219.0" layoutY="545.0" prefHeight="18.0" AnchorPane.bottomAnchor="10.0" />
    </children>
 </AnchorPane>
