@@ -3,6 +3,8 @@ package presentation.controller;
 import data.dao.VeiculoDao;
 import data.dao.VeiculoImportadoDao;
 import data.dao.VeiculoNacionalDao;
+import domain.use_case.veiculo.SaveVeiculoUseCase;
+import domain.use_case.veiculo.UpdateVeiculoUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import domain.model.*;
+import util.AppDependencies;
 import util.VerificacaoErroInput;
 
 import java.util.Optional;
@@ -39,6 +42,9 @@ public class ControllerCadastroCarro {
 
     private final ObservableList<String> tiposCarro = FXCollections.observableArrayList("Nacional", "Importado");
     private final ObservableList<Paises> paises = FXCollections.observableArrayList(Paises.values());
+
+    private final SaveVeiculoUseCase saveVeiculoUseCase = AppDependencies.getSaveVeiculoUseCase();
+    private final UpdateVeiculoUseCase updateVeiculoUseCase = AppDependencies.getUpdateVeiculoUseCase();
 
     private Veiculo veiculoToLoad;
     private int tipoEditarOuSalvar;
@@ -147,55 +153,25 @@ public class ControllerCadastroCarro {
         return new VeiculoNacional(nome, marca, valorVenda, proprietario);
     }
 
-
     public void salvarOuEditar(ActionEvent actionEvent) throws VerificacaoErroInput {
+        Veiculo veiculoToSave = getVeiculo();
         if(tipoEditarOuSalvar == 1){
-            updateVeiculo();
+            veiculoToSave.setId(veiculoToLoad.getId());
+            updateVeiculoUseCase.invoke(veiculoToSave);
         }
         else{
-            if(veiculoToLoad instanceof VeiculoImportado){
-                salvarVeiculoImportado();
-            }
-            else{
-                salvarVeiculoNacional();
-            }
-        }
-
-    }
-
-    private void salvarVeiculoImportado() throws VerificacaoErroInput {
-        VeiculoImportado veiculoToSave = getVeiculoImportado();
-        VeiculoDao veiculoDAO = new VeiculoDao();
-        VeiculoImportadoDao veiculoImportadoDAO = new VeiculoImportadoDao();
-        veiculoDAO.save(veiculoToSave);
-        veiculoImportadoDAO.save(veiculoToSave);
-        fecharJanela();
-    }
-
-    private void salvarVeiculoNacional() throws VerificacaoErroInput {
-        VeiculoNacional veiculoToSave = getVeiculoNacional();
-        VeiculoDao veiculoDAO = new VeiculoDao();
-        VeiculoNacionalDao veiculoINacionalDAO = new VeiculoNacionalDao();
-        veiculoDAO.save(veiculoToSave);
-        veiculoINacionalDAO.save(veiculoToSave);
-        fecharJanela();
-    }
-
-    private void updateVeiculo() throws VerificacaoErroInput {
-        if(tipoUpdate == 1){
-            VeiculoImportado veiculoImportado = getVeiculoImportado();
-            veiculoImportado.setId(veiculoToLoad.getId());
-            VeiculoImportadoDao veiculoImportadoDAO = new VeiculoImportadoDao();
-            veiculoImportadoDAO.update(veiculoImportado);
-        }
-        else{
-            VeiculoNacional veiculoNacional = getVeiculoNacional();
-            veiculoNacional.setId(veiculoToLoad.getId());
-            VeiculoNacionalDao veiculoNacionalDAO = new VeiculoNacionalDao();
-            veiculoNacionalDAO.update(veiculoNacional);
+            saveVeiculoUseCase.invoke(veiculoToSave);
         }
         fecharJanela();
     }
+
+    private Veiculo getVeiculo() throws VerificacaoErroInput {
+        if(veiculoToLoad instanceof VeiculoNacional){
+            return getVeiculoNacional();
+        }
+        return getVeiculoImportado();
+    }
+
 
     private void fecharJanela(){
         Stage stage = (Stage) btnSalvarAtualizar.getScene().getWindow();

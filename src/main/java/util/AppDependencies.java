@@ -2,7 +2,9 @@ package util;
 
 import data.dao.*;
 import data.repository.*;
+import domain.use_case.veiculo.SaveVeiculoUseCase;
 import domain.use_case.veiculo.SellVeiculoUseCase;
+import domain.use_case.veiculo.UpdateVeiculoUseCase;
 import domain.use_case.veiculo.importado.LoadAllImportadoUseCase;
 import domain.use_case.veiculo.nacional.LoadAllNacionalUseCase;
 import domain.use_case.vendedor.LoadAllSellersUseCase;
@@ -29,6 +31,8 @@ public class AppDependencies {
     private static LoadAllSellersUseCase loadAllSellersUseCase;
     private static SellVeiculoUseCase sellVeiculoUseCase;
     private static SaveVendedorUseCase saveVendedorUseCase;
+    private static SaveVeiculoUseCase saveVeiculoUseCase;
+    private static UpdateVeiculoUseCase updateVeiculoUseCase;
 
     //GET DAOS
     public static VendedorDao getVendedorDao(){
@@ -136,5 +140,19 @@ public class AppDependencies {
             saveVendedorUseCase = new SaveVendedorUseCase(getVendedorRepository());
         }
         return saveVendedorUseCase;
+    }
+
+    public static SaveVeiculoUseCase getSaveVeiculoUseCase(){
+        if (saveVeiculoUseCase == null){
+            saveVeiculoUseCase = new SaveVeiculoUseCase(getVeiculoRepository(), getVeiculoImportadoRepository(), getVeiculoNacionalRepository());
+        }
+        return saveVeiculoUseCase;
+    }
+
+    public static UpdateVeiculoUseCase getUpdateVeiculoUseCase(){
+        if(updateVeiculoUseCase == null){
+            updateVeiculoUseCase = new UpdateVeiculoUseCase(getVeiculoImportadoRepository(), getVeiculoNacionalRepository());
+        }
+        return updateVeiculoUseCase;
     }
 }
