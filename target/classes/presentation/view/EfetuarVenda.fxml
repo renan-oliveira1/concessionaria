@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="447.0" prefWidth="396.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.ControllerEfetuarVenda">
+<AnchorPane prefHeight="447.0" prefWidth="396.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.controller.ControllerEfetuarVenda">
    <children>
       <TableView fx:id="tableVendedores" layoutX="55.0" layoutY="33.0" prefHeight="282.0" prefWidth="335.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="110.0">
         <columns>
@@ -23,17 +23,17 @@
       </Label>
       <Label fx:id="lbCarroMarca" layoutX="55.0" layoutY="34.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="34.0" />
       <Label fx:id="lbCarroValor" layoutX="55.0" layoutY="69.0" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="60.0" />
-      <Label fx:id="lbCarroComissao" layoutX="170.0" layoutY="11.0" text="teste" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="10.0" />
+      <Label fx:id="lbCarroComissao" layoutX="210.0" layoutY="10.0" text="teste" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="10.0" />
       <Label fx:id="lbPaisOuProprietario" layoutX="110.0" layoutY="34.0" text="Pais:" underline="true" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="34.0" />
       <Label fx:id="lbCarroProp" layoutX="178.0" layoutY="34.0" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="34.0" />
       <Button fx:id="btnVender" layoutX="259.0" layoutY="348.0" mnemonicParsing="false" onAction="#efetuarVenda" prefHeight="32.0" prefWidth="69.0" text="Vender" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-      <Label layoutX="152.0" layoutY="85.0" prefHeight="19.0" prefWidth="116.0" text="Selecione Vendeor:" AnchorPane.leftAnchor="152.0" AnchorPane.rightAnchor="128.0">
+      <Label layoutX="134.0" layoutY="85.0" prefHeight="19.0" prefWidth="128.0" text="Selecione Vendedor:" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="134.0">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Button fx:id="btnAdicionarVendedor" layoutX="20.0" layoutY="409.0" mnemonicParsing="false" onAction="#adicionarVendedor" prefHeight="32.0" prefWidth="108.0" text="Novo Vendedor" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
-      <Button fx:id="btnListaVendas" layoutX="126.0" layoutY="402.0" mnemonicParsing="false" onAction="#verListaVendas" prefHeight="32.0" prefWidth="90.0" text="Lista Vendas" AnchorPane.bottomAnchor="10.0" />
+      <Button fx:id="btnAdicionarVendedor" layoutX="20.0" layoutY="409.0" mnemonicParsing="false" onAction="#adicionarVendedor" prefHeight="32.0" prefWidth="116.0" text="Novo Vendedor" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+      <Button fx:id="btnListaVendas" layoutX="133.0" layoutY="405.0" mnemonicParsing="false" onAction="#verListaVendas" prefHeight="32.0" prefWidth="104.0" text="Lista Vendas" AnchorPane.bottomAnchor="10.0" />
       <Label fx:id="lbCarroPais" layoutX="171.0" layoutY="34.0" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="34.0" />
    </children>
 </AnchorPane>
