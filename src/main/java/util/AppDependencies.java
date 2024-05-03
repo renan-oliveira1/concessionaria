@@ -2,6 +2,7 @@ package util;
 
 import data.dao.*;
 import data.repository.*;
+import domain.use_case.veiculo.SellVeiculoUseCase;
 import domain.use_case.veiculo.importado.LoadAllImportadoUseCase;
 import domain.use_case.veiculo.nacional.LoadAllNacionalUseCase;
 import domain.use_case.vendedor.LoadAllSellersUseCase;
@@ -25,6 +26,7 @@ public class AppDependencies {
     private static LoadAllImportadoUseCase loadAllImportadoUseCase;
     private static LoadAllNacionalUseCase loadAllNacionalUseCase;
     private static LoadAllSellersUseCase loadAllSellersUseCase;
+    private static SellVeiculoUseCase sellVeiculoUseCase;
 
     //GET DAOS
     public static VendedorDao getVendedorDao(){
@@ -35,7 +37,7 @@ public class AppDependencies {
     }
 
     public static VeiculoDao getVeiculoDao(){
-        if(veiculoDao != null){
+        if(veiculoDao == null){
             veiculoDao = new VeiculoDao();
         }
         return veiculoDao;
@@ -118,6 +120,13 @@ public class AppDependencies {
             loadAllSellersUseCase = new LoadAllSellersUseCase(getVendedorRepository(), getVeiculoNacionalRepository(), getVeiculoImportadoRepository());
         }
         return loadAllSellersUseCase;
+    }
+
+    public static SellVeiculoUseCase getSellVeiculoUseCase(){
+        if(sellVeiculoUseCase == null){
+            sellVeiculoUseCase = new SellVeiculoUseCase(getVeiculoRepository());
+        }
+        return sellVeiculoUseCase;
     }
 
 }

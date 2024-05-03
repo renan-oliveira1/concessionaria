@@ -4,6 +4,7 @@ import data.dao.VeiculoDao;
 import data.dao.VeiculoImportadoDao;
 import data.dao.VeiculoNacionalDao;
 import data.dao.VendedorDao;
+import domain.use_case.veiculo.SellVeiculoUseCase;
 import domain.use_case.vendedor.LoadAllSellersUseCase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,6 +57,7 @@ public class ControllerEfetuarVenda {
     private Veiculo veiculoToSell;
 
     private final LoadAllSellersUseCase loadAllSellersUseCase = AppDependencies.loadAllSellersUseCase();
+    private final SellVeiculoUseCase sellVeiculoUseCase = AppDependencies.getSellVeiculoUseCase();
 
     @FXML
     private void initialize() {
@@ -66,27 +68,7 @@ public class ControllerEfetuarVenda {
 
     private void loadValues() {
         vendedores.clear();
-        var teste = loadAllSellersUseCase.invoke();
         vendedores.addAll(loadAllSellersUseCase.invoke());
-//        VendedorDao vendedorDAO = new VendedorDao();
-//        VeiculoImportadoDao veiculoImportadoDAO = new VeiculoImportadoDao();
-//        VeiculoNacionalDao veiculoNacionalDAO = new VeiculoNacionalDao();
-//        for(Vendedor vendedor : loadAllSellersUseCase.invoke()){
-//
-//            for (VeiculoImportado veiculoImportado : veiculoImportadoDAO.loadAll()){
-//                if(veiculoImportado.getVendedor()!=null){
-//                    if(veiculoImportado.getVendedor().getId().equals(vendedor.getId()))
-//                        vendedor.addVeiculoVenda(veiculoImportado);
-//                }
-//            }
-//            for (VeiculoNacional veiculoNacional : veiculoNacionalDAO.loadAll())
-//                if(veiculoNacional.getVendedor()!=null){
-//                    if(veiculoNacional.getVendedor().getId().equals(vendedor.getId()))
-//                        vendedor.addVeiculoVenda(veiculoNacional);
-//                }
-//
-//            vendedores.add(vendedor);
-//        }
     }
 
     private void bindDataToTable() {
@@ -134,11 +116,7 @@ public class ControllerEfetuarVenda {
 
     public void efetuarVenda(ActionEvent actionEvent) {
         Vendedor vendedor = tableVendedores.getSelectionModel().getSelectedItem();
-        veiculoToSell.setDataVenda(LocalDate.now());
-        veiculoToSell.setVendedor(vendedor);
-
-        VeiculoDao veiculoDAO = new VeiculoDao();
-        veiculoDAO.updateSell(veiculoToSell);
+        sellVeiculoUseCase.invoke(veiculoToSell, vendedor);
 
         fecharJanela();
     }

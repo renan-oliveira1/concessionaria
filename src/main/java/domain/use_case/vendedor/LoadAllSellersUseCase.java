@@ -15,7 +15,9 @@ public class LoadAllSellersUseCase {
     private final IRepository<VeiculoNacional, Integer> veiculoNacionalRepository;
     private final IRepository<VeiculoImportado, Integer> veiculoImportadoRepository;
 
-    public LoadAllSellersUseCase(IRepository<Vendedor, Integer> vendedorRepository, IRepository<VeiculoNacional, Integer> veiculoNacionalRepository, IRepository<VeiculoImportado, Integer> veiculoImportadoRepository) {
+    public LoadAllSellersUseCase(IRepository<Vendedor, Integer> vendedorRepository,
+                                 IRepository<VeiculoNacional, Integer> veiculoNacionalRepository,
+                                 IRepository<VeiculoImportado, Integer> veiculoImportadoRepository) {
         this.vendedorRepository = vendedorRepository;
         this.veiculoNacionalRepository = veiculoNacionalRepository;
         this.veiculoImportadoRepository = veiculoImportadoRepository;
