@@ -6,6 +6,7 @@ import domain.use_case.veiculo.SellVeiculoUseCase;
 import domain.use_case.veiculo.importado.LoadAllImportadoUseCase;
 import domain.use_case.veiculo.nacional.LoadAllNacionalUseCase;
 import domain.use_case.vendedor.LoadAllSellersUseCase;
+import domain.use_case.vendedor.SaveVendedorUseCase;
 
 public class AppDependencies {
     //DAOS
@@ -27,6 +28,7 @@ public class AppDependencies {
     private static LoadAllNacionalUseCase loadAllNacionalUseCase;
     private static LoadAllSellersUseCase loadAllSellersUseCase;
     private static SellVeiculoUseCase sellVeiculoUseCase;
+    private static SaveVendedorUseCase saveVendedorUseCase;
 
     //GET DAOS
     public static VendedorDao getVendedorDao(){
@@ -129,4 +131,10 @@ public class AppDependencies {
         return sellVeiculoUseCase;
     }
 
+    public static SaveVendedorUseCase getSaveVendedorUseCase(){
+        if (saveVendedorUseCase == null){
+            saveVendedorUseCase = new SaveVendedorUseCase(getVendedorRepository());
+        }
+        return saveVendedorUseCase;
+    }
 }
